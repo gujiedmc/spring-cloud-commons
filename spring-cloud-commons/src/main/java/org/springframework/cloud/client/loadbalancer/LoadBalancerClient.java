@@ -22,6 +22,8 @@ import java.net.URI;
 import org.springframework.cloud.client.ServiceInstance;
 
 /**
+ * 负载均衡客户端，可以对某个服务执行请求
+ *
  * Represents a client-side load balancer.
  *
  * @author Spencer Gibb

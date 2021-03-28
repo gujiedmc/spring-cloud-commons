@@ -37,6 +37,8 @@ import org.springframework.core.ResolvableType;
 import org.springframework.core.env.MapPropertySource;
 
 /**
+ * 使用name隔离的spring ApplicationContext。
+ *
  * Creates a set of child contexts that allows a set of Specifications to define the beans
  * in each child context.
  *

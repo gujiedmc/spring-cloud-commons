@@ -25,6 +25,8 @@ import org.springframework.cloud.loadbalancer.core.ReactorServiceInstanceLoadBal
 import org.springframework.core.env.Environment;
 
 /**
+ * 默认的LoadBalancerClient创建工厂，每个客户端名称都有一个独立的ApplicationContext。
+ *
  * A factory that creates client, load balancer and client configuration instances. It
  * creates a Spring ApplicationContext per client name, and extracts the beans that it
  * needs from there.

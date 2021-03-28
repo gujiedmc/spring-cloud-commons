@@ -26,6 +26,9 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.util.Assert;
 
 /**
+ * RestTemplate的负载均衡拦截器，拦截RestTemplate的全部请求，
+ * 交由具有负载均衡客户端{@link #loadBalancer}执行请求
+ *
  * @author Spencer Gibb
  * @author Dave Syer
  * @author Ryan Baxter
@@ -33,8 +36,14 @@ import org.springframework.util.Assert;
  */
 public class LoadBalancerInterceptor implements ClientHttpRequestInterceptor {
 
+	/**
+	 * 具有负载均衡功能的HttpClient
+	 */
 	private LoadBalancerClient loadBalancer;
 
+	/**
+	 * 将RestTemplate的原生request封装成负载均衡执行器request的工厂
+	 */
 	private LoadBalancerRequestFactory requestFactory;
 
 	public LoadBalancerInterceptor(LoadBalancerClient loadBalancer,

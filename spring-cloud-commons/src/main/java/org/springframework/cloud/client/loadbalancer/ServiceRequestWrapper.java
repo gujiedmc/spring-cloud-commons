@@ -23,6 +23,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.http.client.support.HttpRequestWrapper;
 
 /**
+ * 对Spring web中的HttpRequest进行覆写，使用负载均衡器对URI进行处理。
  * @author Ryan Baxter
  */
 public class ServiceRequestWrapper extends HttpRequestWrapper {

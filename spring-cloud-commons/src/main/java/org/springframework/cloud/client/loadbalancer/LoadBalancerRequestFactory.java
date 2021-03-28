@@ -18,11 +18,20 @@ package org.springframework.cloud.client.loadbalancer;
 
 import java.util.List;
 
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpResponse;
 
 /**
+ * 将Spring Web中的http请求上下文（参数、请求体、执行器），
+ * 封装成到负载均衡客户端需要的请求{@link LoadBalancerRequest}中，
+ * 交给{@link LoadBalancerInterceptor}和{@link RetryLoadBalancerInterceptor}使用
+ *
+ * 当拦截器选择好服务器之后，执行{@link LoadBalancerRequest#apply(ServiceInstance)}的时候，
+ * 通过{@link ServiceRequestWrapper#getURI()}进行覆写，通过负载均衡器获取URI，
+ * 然后将请求交由spring web中原生的http api{@link ClientHttpRequestExecution#execute}执行。
+ *
  * Creates {@link LoadBalancerRequest}s for {@link LoadBalancerInterceptor} and
  * {@link RetryLoadBalancerInterceptor}. Applies {@link LoadBalancerRequestTransformer}s
  * to the intercepted {@link HttpRequest}.

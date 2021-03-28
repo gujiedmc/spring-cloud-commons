@@ -38,6 +38,11 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Auto-configuration for blocking client-side load balancing.
  *
+ * 对客户端的RestTemplate进行装配，以实现客户端负载均衡。
+ * 主要是通过拦截器{@link LoadBalancerInterceptorConfig#loadBalancerInterceptor}
+ * 对RestTemplate进行定制化{@link LoadBalancerInterceptorConfig#restTemplateCustomizer}，
+ * 使得RestTemplate底层调用的执行改为通过 {@link LoadBalancerClient} 执行
+ *
  * @author Spencer Gibb
  * @author Dave Syer
  * @author Will Tran
